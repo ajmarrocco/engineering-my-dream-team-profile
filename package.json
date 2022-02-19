@@ -1,0 +1,22 @@
+{
+  "name": "engineering-my-dream-team-profile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ajmarrocco/engineering-my-dream-team-profile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ajmarrocco/engineering-my-dream-team-profile/issues"
+  },
+  "homepage": "https://github.com/ajmarrocco/engineering-my-dream-team-profile#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
