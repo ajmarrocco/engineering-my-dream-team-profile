@@ -18,5 +18,8 @@
   "homepage": "https://github.com/ajmarrocco/engineering-my-dream-team-profile#readme",
   "devDependencies": {
     "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
   }
 }
