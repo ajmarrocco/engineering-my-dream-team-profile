@@ -17,41 +17,42 @@ class Index {
                     name: 'name',
                     message: 'What is the employee name?'
                 })
-                // .then(({ name }) => {
-                //     this.player = new Employee(name,id,email);
-                //     console.log(this.player);
+                .then(({ name }) => {
+                    this.player = new Employee(name);
+                    // console.log(this.player);
+                    // console.log(name);
 
+                    this.getId(name)
+                })
+                // .then(() => {
                 //     this.getId()
                 // })
-                .then(() => {
-                    this.getId()
-                })
     }
-    getId(){
+    getId(name){
             inquirer
                 .prompt({
                     type: 'number',
                     name: 'id',
                     message: 'What is the employee id?'
                 })
-                // .then(({ name, id }) => {
-                //     this.player = new Employee(this.name, id);
-                //     console.log(this.player);
+                .then(({ id }) => {
+                    this.player = new Employee(name, id);
+                    // console.log(this.player);
 
-                //     // this.getId()
-                // })
-                .then(() => {
-                    this.getEmail()
+                    this.getEmail(name,id);
                 })
+                // .then(() => {
+                //     this.getEmail()
+                // })
     }
-    getEmail(){
+    getEmail(name,id){
             inquirer
                 .prompt({
                     type: 'string',
                     name: 'email',
                     message: 'What is the employee email?'
                 })
-                .then(({ name, id, email }) => {
+                .then(({ email }) => {
                     this.player = new Employee(name, id, email);
                     console.log(this.player);
 
