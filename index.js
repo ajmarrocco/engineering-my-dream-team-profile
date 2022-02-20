@@ -64,7 +64,8 @@ class Index {
             })
             .then(({ role }) => {
                 //takes role and saves it to new employee class
-                this.employee = new Employee(name, id, email, role);
+                this.manager = new Manager(name, id, email, role);
+                // console.table(this.manager);
                 //console tables employee class
                 this.getOfficeNumber(name, id, email, role)
             })
@@ -80,24 +81,9 @@ class Index {
             .then(({ number }) => {
                 //takes role and saves it to new employee class
                 this.manager = new Manager(name, id, email, role, number);
-                //console tables employee class
-                getRole(name,id,email,role,number)
-            })
-    }
-    getRole(name,id,email,role,number){
-        //prompts user to input employee role
-        inquirer
-            .prompt({
-                type: 'list',
-                name: 'role',
-                message: 'What is the employee role?',
-                choices: ['Manager','Engineer','Intern']
-            })
-            .then(({ role }) => {
-                //takes role and saves it to new employee class
-                this.manager = new Manager(name, id, email, role, number, role);
-                //console tables employee class
                 console.table(this.manager);
+                //console tables employee class
+                // getRole(name,id,email,role,number)
             })
     }
 }
