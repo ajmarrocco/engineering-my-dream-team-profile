@@ -3,67 +3,73 @@ const Employee = require('./lib/Employee');
 
 
 class Index {
+    //creates constructor
     constructor() {
-        // this.roundNumber = 0;
-        // this.isPlayerTurn = false;
-        // this.enemies = [];
-        // this.currentEnemy;
-        // this.player;
     }
+    //getName method
     getName(){
             inquirer
+                //prompts user to input employee name
                 .prompt({
                     type: 'text',
                     name: 'name',
                     message: 'What is the employee name?'
                 })
                 .then(({ name }) => {
-                    this.player = new Employee(name);
-                    // console.log(this.player);
-                    // console.log(name);
-
+                    //takes name and saves it to new employee class
+                    this.employee = new Employee(name);
+                    //calls method getId with name as parameter
                     this.getId(name)
                 })
-                // .then(() => {
-                //     this.getId()
-                // })
     }
     getId(name){
             inquirer
+            //prompts user to input employee id
                 .prompt({
                     type: 'number',
                     name: 'id',
                     message: 'What is the employee id?'
                 })
                 .then(({ id }) => {
-                    this.player = new Employee(name, id);
-                    // console.log(this.player);
-
+                    //takes id and saves it to new employee class
+                    this.employee = new Employee(name, id);
+                    //calls method getId with name and id as parameter
                     this.getEmail(name,id);
                 })
-                // .then(() => {
-                //     this.getEmail()
-                // })
     }
     getEmail(name,id){
             inquirer
+            //prompts user to input employee email
                 .prompt({
                     type: 'string',
                     name: 'email',
                     message: 'What is the employee email?'
                 })
                 .then(({ email }) => {
-                    this.player = new Employee(name, id, email);
-                    console.log(this.player);
-
-                    // this.getId()
+                    //takes email and saves it to new employee class
+                    this.employee = new Employee(name, id, email);
+                    //calls method getId with name, id and email as parameter
+                    this.getRole(name, id, email)
                 })
-                // .then(() => {
-                //     this.getEmail()
-                // })
+    }
+    getRole(name,id,email){
+            //prompts user to input employee role
+            inquirer
+                .prompt({
+                    type: 'list',
+                    name: 'role',
+                    message: 'What is the employee role?',
+                    choices: ['Manager']
+                })
+                .then(({ role }) => {
+                    //takes role and saves it to new employee class
+                    this.employee = new Employee(name, id, email, role);
+                    //console tables employee class
+                    console.table(this.employee);
+                })
     }
 }
-
+//calls get name
 new Index().getName();
 
 module.exports = Index;
