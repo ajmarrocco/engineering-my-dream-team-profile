@@ -3,6 +3,7 @@ const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const generatePage = require('./src/page-template');
 
 
 var employeeArray = [];
@@ -172,6 +173,10 @@ class Index {
 
 }
 //calls get name
-new Index().getName()
+new Index()
+    .getName()
+    .then(employees => {
+        return generatePage(employees);
+    })
 
 module.exports = Index;
