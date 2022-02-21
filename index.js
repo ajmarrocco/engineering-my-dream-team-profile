@@ -82,12 +82,31 @@ class Index {
                 //takes role and saves it to new employee class
                 this.manager = new Manager(name, id, email, role, number);
                 console.table(this.manager);
+                this.addEmployee();
                 //console tables employee class
                 // getRole(name,id,email,role,number)
             })
     }
+    addEmployee(){
+        inquirer
+            .prompt({
+                type: 'confirm',
+                name: 'confirmAddEmployee',
+                message: 'Would you like to enter another employee?',
+                default: false
+            })
+            .then(({ confirmAddEmployee }) => {
+                console.log(confirmAddEmployee);
+                if (confirmAddEmployee) {
+                    this.getName();
+                } else {
+                    return;
+                }
+            })
+    }
+
 }
 //calls get name
-new Index().getName();
+new Index().getName()
 
 module.exports = Index;
