@@ -1,6 +1,8 @@
 const inquirer = require('inquirer');
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 
 class Index {
@@ -87,6 +89,40 @@ class Index {
                 // getRole(name,id,email,role,number)
             })
     }
+    getGithub(name,id,email,role){
+        //prompts user to input employee role
+        inquirer
+            .prompt({
+                type: 'input',
+                name: 'github',
+                message: "What is the engineer's github account?"
+            })
+            .then(({ github }) => {
+                //takes role and saves it to new employee class
+                this.engineer = new Engineer(name, id, email, role, github);
+                console.table(this.engineer);
+                this.addEmployee();
+                //console tables employee class
+                // getRole(name,id,email,role,number)
+            })
+    }
+    getSchool(name,id,email,role){
+        //prompts user to input employee role
+        inquirer
+            .prompt({
+                type: 'input',
+                name: 'school',
+                message: "What is the intern's school?"
+            })
+            .then(({ school }) => {
+                //takes role and saves it to new employee class
+                this.intern = new Intern(name, id, email, role, school);
+                console.table(this.intern);
+                this.addEmployee();
+                //console tables employee class
+                // getRole(name,id,email,role,number)
+            })
+    }
     addEmployee(){
         inquirer
             .prompt({
@@ -96,7 +132,7 @@ class Index {
                 default: false
             })
             .then(({ confirmAddEmployee }) => {
-                console.log(confirmAddEmployee);
+
                 if (confirmAddEmployee) {
                     this.getName();
                 } else {
