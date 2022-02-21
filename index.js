@@ -5,6 +5,8 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
 
+var employeeArray = [];
+
 class Index {
     //creates constructor
     constructor() {
@@ -99,7 +101,8 @@ class Index {
             .then(({ number }) => {
                 //takes role and saves it to new employee class
                 this.manager = new Manager(name, id, email, role, number);
-                console.table(this.manager);
+                employeeArray.push(this.manager);
+                console.log(employeeArray)
                 this.addEmployee();
                 //console tables employee class
                 // getRole(name,id,email,role,number)
@@ -116,7 +119,8 @@ class Index {
             .then(({ github }) => {
                 //takes role and saves it to new employee class
                 this.engineer = new Engineer(name, id, email, role, github);
-                console.table(this.engineer);
+                employeeArray.push(this.engineer);
+                console.log(employeeArray)
                 this.addEmployee();
                 //console tables employee class
                 // getRole(name,id,email,role,number)
@@ -133,7 +137,8 @@ class Index {
             .then(({ school }) => {
                 //takes role and saves it to new employee class
                 this.intern = new Intern(name, id, email, role, school);
-                console.table(this.intern);
+                employeeArray.push(this.intern);
+                console.log(employeeArray)
                 this.addEmployee();
                 //console tables employee class
                 // getRole(name,id,email,role,number)
