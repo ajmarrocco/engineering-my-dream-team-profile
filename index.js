@@ -66,10 +66,16 @@ class Index {
             })
             .then(({ role }) => {
                 //takes role and saves it to new employee class
-                this.manager = new Manager(name, id, email, role);
-                // console.table(this.manager);
-                //console tables employee class
-                this.getOfficeNumber(name, id, email, role)
+                if (role === 'Manager') {
+                    this.manager = new Manager(name, id, email, role);
+                    this.getOfficeNumber(name, id, email, role);
+                } else if(role === 'Engineer'){
+                    this.engineer = new Engineer(name, id, email, role);
+                    this.getGithub(name, id, email, role);
+                } else{
+                    this.intern = new Intern(name, id, email, role);
+                    this.getSchool(name, id, email, role);
+                }
             })
     }
     getOfficeNumber(name,id,email,role){
@@ -95,7 +101,7 @@ class Index {
             .prompt({
                 type: 'input',
                 name: 'github',
-                message: "What is the engineer's github account?"
+                message: "What is the engineer's github username?"
             })
             .then(({ github }) => {
                 //takes role and saves it to new employee class
