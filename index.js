@@ -8,6 +8,7 @@ const Intern = require('./lib/Intern');
 class Index {
     //creates constructor
     constructor() {
+        this.index = 0;
     }
     //getName method
     getName(){
@@ -57,26 +58,35 @@ class Index {
     }
     getRole(name,id,email){
             //prompts user to input employee role
-        inquirer
-            .prompt({
-                type: 'list',
-                name: 'role',
-                message: 'What is the employee role?',
-                choices: ['Manager','Engineer','Intern']
-            })
-            .then(({ role }) => {
-                //takes role and saves it to new employee class
-                if (role === 'Manager') {
-                    this.manager = new Manager(name, id, email, role);
-                    this.getOfficeNumber(name, id, email, role);
-                } else if(role === 'Engineer'){
-                    this.engineer = new Engineer(name, id, email, role);
-                    this.getGithub(name, id, email, role);
-                } else{
-                    this.intern = new Intern(name, id, email, role);
-                    this.getSchool(name, id, email, role);
-                }
-            })
+        if(this.index === 0){
+            let role = 'Manager'
+            //if role is manager then add to manager class
+            this.manager = new Manager(name, id, email, role);
+            //call getOfficeNumber
+            this.getOfficeNumber(name, id, email, role);
+        } else {
+            inquirer
+                .prompt({
+                    type: 'list',
+                    name: 'role',
+                    message: 'What is the employee role?',
+                    choices: ['Engineer','Intern']
+                })
+                .then(({ role }) => {
+                    //takes role and saves it to new employee class
+                    if(role === 'Engineer'){
+                        //if role is engineer then add to enigneer class
+                        this.engineer = new Engineer(name, id, email, role);
+                        //call getGitHub
+                        this.getGithub(name, id, email, role);
+                    } else{
+                        //if role is intern then add to intern class
+                        this.intern = new Intern(name, id, email, role);
+                        //call getSchool
+                        this.getSchool(name, id, email, role);
+                    }
+                })
+        }
     }
     getOfficeNumber(name,id,email,role){
         //prompts user to input employee role
@@ -140,6 +150,13 @@ class Index {
             .then(({ confirmAddEmployee }) => {
 
                 if (confirmAddEmployee) {
+                    this.index++;
+                    //shows a new employee is being added
+                    console.log(`
+                        ===================
+                        Add a New Employee
+                        ===================
+                    `);
                     this.getName();
                 } else {
                     return;
