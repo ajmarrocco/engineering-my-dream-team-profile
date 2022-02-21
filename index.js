@@ -102,8 +102,8 @@ class Index {
                 //takes role and saves it to new employee class
                 this.manager = new Manager(name, id, email, role, number);
                 employeeArray.push(this.manager);
-                console.log(employeeArray)
-                this.addEmployee();
+                // console.log(employeeArray)
+                this.addEmployee(employeeArray);
                 //console tables employee class
                 // getRole(name,id,email,role,number)
             })
@@ -120,8 +120,8 @@ class Index {
                 //takes role and saves it to new employee class
                 this.engineer = new Engineer(name, id, email, role, github);
                 employeeArray.push(this.engineer);
-                console.log(employeeArray)
-                this.addEmployee();
+                // console.log(employeeArray)
+                this.addEmployee(employeeArray);
                 //console tables employee class
                 // getRole(name,id,email,role,number)
             })
@@ -138,13 +138,13 @@ class Index {
                 //takes role and saves it to new employee class
                 this.intern = new Intern(name, id, email, role, school);
                 employeeArray.push(this.intern);
-                console.log(employeeArray)
-                this.addEmployee();
+                // console.log(employeeArray)
+                this.addEmployee(employeeArray);
                 //console tables employee class
                 // getRole(name,id,email,role,number)
             })
     }
-    addEmployee(){
+    addEmployee(employees){
         inquirer
             .prompt({
                 type: 'confirm',
@@ -164,7 +164,8 @@ class Index {
                     `);
                     this.getName();
                 } else {
-                    return;
+                    console.log(employees);
+                    return employees;
                 }
             })
     }
