@@ -1,8 +1,9 @@
-const generateProjects = projectsArr => {
+//adds information from the index class
+const generateEmployees = employeesArr => {
     return `
         <section class="my-3" id="portfolio">
             <div class="row justify-content-around">
-            ${projectsArr
+            ${employeesArr
                 .filter(({ role }) => role ==='Manager')
                 .map(({ name, id, email, role, number }) => {
                     return `
@@ -21,7 +22,7 @@ const generateProjects = projectsArr => {
                 })
             .join('')}
 
-        ${projectsArr
+        ${employeesArr
             .filter(({ role }) => role === 'Engineer')
             .map(({ name, id, email, role, github }) => {
                 return `
@@ -40,7 +41,7 @@ const generateProjects = projectsArr => {
             })
             .join('')}
 
-            ${projectsArr
+            ${employeesArr
             .filter(({ role }) => role === 'Intern')
             .map(({ name, id, email, role, school }) => {
                 return `
@@ -63,9 +64,8 @@ const generateProjects = projectsArr => {
     `;
 };
 
+//formats the HTML page
 module.exports = templateData => {
-    // destructure page data by section
-    // const { templateData } = templateData;
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -89,7 +89,7 @@ module.exports = templateData => {
             </div>
         </header>
         <main class="container my-5">
-            ${generateProjects(templateData)}
+            ${generateEmployees(templateData)}
         </main>
     </body>
     </html>
