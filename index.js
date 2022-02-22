@@ -15,7 +15,7 @@ class Index {
         this.index = 0;
     }
     //getName method
-    getName(){
+    getName(role){
         inquirer
             //prompts user to input employee name
             .prompt({
@@ -27,10 +27,10 @@ class Index {
                 //takes name and saves it to new employee class
                 this.employee = new Employee(name);
                 //calls method getId with name as parameter
-                this.getId(name)
+                this.getId(name,role)
             })
     }
-    getId(name){
+    getId(name,role){
         inquirer
         //prompts user to input employee id
             .prompt({
@@ -42,10 +42,10 @@ class Index {
                 //takes id and saves it to new employee class
                 this.employee = new Employee(name, id);
                 //calls method getId with name and id as parameter
-                this.getEmail(name,id);
+                this.getEmail(name,id,role);
             })
     }
-    getEmail(name,id){
+    getEmail(name,id,role){
         inquirer
         //prompts user to input employee email
             .prompt({
@@ -57,10 +57,10 @@ class Index {
                 //takes email and saves it to new employee class
                 this.employee = new Employee(name, id, email);
                 //calls method getId with name, id and email as parameter
-                this.getRole(name, id, email)
+                this.getRole(name, id, email,role)
             })
     }
-    getRole(name,id,email){
+    getRole(name,id,email,role){
             //prompts user to input employee role
         if(this.index === 0){
             let role = 'Manager'
@@ -69,27 +69,18 @@ class Index {
             //call getOfficeNumber
             this.getOfficeNumber(name, id, email, role);
         } else {
-            inquirer
-                .prompt({
-                    type: 'list',
-                    name: 'role',
-                    message: 'What is the employee role?',
-                    choices: ['Engineer','Intern']
-                })
-                .then(({ role }) => {
-                    //takes role and saves it to new employee class
-                    if(role === 'Engineer'){
-                        //if role is engineer then add to enigneer class
-                        this.engineer = new Engineer(name, id, email, role);
-                        //call getGitHub
-                        this.getGithub(name, id, email, role);
-                    } else{
-                        //if role is intern then add to intern class
-                        this.intern = new Intern(name, id, email, role);
-                        //call getSchool
-                        this.getSchool(name, id, email, role);
-                    }
-                })
+            if (role === 'Engineer'){
+                //if role is engineer then add to enigneer class
+                this.engineer = new Engineer(name, id, email, role);
+                //call getGitHub
+                this.getGithub(name, id, email, role);
+            } else {
+                //if role is intern then add to intern class
+                this.intern = new Intern(name, id, email, role);
+                //call getSchool
+                this.getSchool(name, id, email, role);
+            }
+
         }
     }
     getOfficeNumber(name,id,email,role){
@@ -164,7 +155,31 @@ class Index {
                         Add a New Employee
                         ===================
                     `);
-                    this.getName();
+
+                    inquirer
+                        .prompt({
+                            type: 'list',
+                            name: 'role',
+                            message: 'What is the employee role?',
+                            choices: ['Engineer','Intern']
+                        })
+                        .then(({ role }) => {
+                            console.log(`You are adding a ${role}`)
+                            // var role = role;
+                            this.getName(role);
+                            //takes role and saves it to new employee class
+                            // if(role === 'Engineer'){
+                            //     //if role is engineer then add to enigneer class
+                            //     this.engineer = new Engineer(name, id, email, role);
+                            //     //call getGitHub
+                            //     this.getGithub(name, id, email, role);
+                            // } else{
+                            //     //if role is intern then add to intern class
+                            //     this.intern = new Intern(name, id, email, role);
+                            //     //call getSchool
+                            //     this.getSchool(name, id, email, role);
+                            // }
+                        })
                 } else {
                     // console.log(employees);
                     // console.log(generatePage(employees))
