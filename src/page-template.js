@@ -1,14 +1,13 @@
 const generateProjects = projectsArr => {
     return `
         <section class="my-3" id="portfolio">
-            <h2 class="text-dark bg-primary p-2 display-inline-block">Work</h2>
-            <div class="flex-row justify-space-between">
+            <div class="row justify-space-between">
             ${projectsArr
                 .filter(({ role }) => role ==='Manager')
                 .map(({ name, id, email, role, number }) => {
                     return `
-                        <div class="col-12 mb-2 bg-dark text-light p-3">
-                            <h3 class="portfolio-item-title text-light">${name}</h3>
+                        <div class="col-3 mb-2 mx-1 p-3 flex-column">
+                            <h3 class="portfolio-item-title">${name}</h3>
                             <h5 class="portfolio-languages">
                                 Built With:
                                 ${id}
@@ -16,7 +15,6 @@ const generateProjects = projectsArr => {
                             <p>${email}</p>
                             <p>${role}</p>
                             <p>${number}</p>
-                            <a href="" class="btn"><i class="fab fa-github mr-2"></i>View Project on GitHub</a>
                         </div>
                     `;
                 })
@@ -26,8 +24,8 @@ const generateProjects = projectsArr => {
             .filter(({ role }) => role === 'Engineer')
             .map(({ name, id, email, role, github }) => {
                 return `
-                    <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
-                        <h3 class="portfolio-item-title text-light">${name}</h3>
+                    <div class="col-3 mb-2 mx-1 p-3 flex-column">
+                        <h3 class="portfolio-item-title">${name}</h3>
                         <h5 class="portfolio-languages">
                             Built With:
                             ${id}
@@ -44,8 +42,8 @@ const generateProjects = projectsArr => {
             .filter(({ role }) => role === 'Intern')
             .map(({ name, id, email, role, school }) => {
                 return `
-                    <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
-                        <h3 class="portfolio-item-title text-light">${name}</h3>
+                    <div class="col-3 mb-2 mx-1 p-3 flex-column">
+                        <h3 class="portfolio-item-title">${name}</h3>
                         <h5 class="portfolio-languages">
                             Built With:
                             ${id}
@@ -83,7 +81,7 @@ module.exports = templateData => {
     <body>
         <header class="bg-danger">
             <div class="container justify-space-between align-center py-3">
-                <h1 class="page-title text-white py-2 px-3">My Team</h1>
+                <h1 class="page-title text-white py-2 px-3 text-center">My Team</h1>
             </div>
         </header>
         <main class="container my-5">

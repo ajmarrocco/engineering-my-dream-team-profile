@@ -1,8 +1,3 @@
-/* styles creates gradient backgroud for header */
-header{
-    background-image: linear-gradient(to right, #0749ff, #120033);
-}
-
 /* styles height of current icon */
 .current-icon{
     height: 30px;
