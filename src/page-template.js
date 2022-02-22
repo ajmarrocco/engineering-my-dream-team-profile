@@ -1,20 +1,21 @@
 const generateProjects = projectsArr => {
     return `
         <section class="my-3" id="portfolio">
-            <div class="row justify-space-between">
+            <div class="row justify-content-around">
             ${projectsArr
                 .filter(({ role }) => role ==='Manager')
                 .map(({ name, id, email, role, number }) => {
                     return `
-                        <div class="col-3 mb-2 mx-1 p-3 flex-column">
-                            <h3 class="portfolio-item-title">${name}</h3>
-                            <h5 class="portfolio-languages">
-                                Built With:
-                                ${id}
-                            </h5>
-                            <p>${email}</p>
-                            <p>${role}</p>
-                            <p>${number}</p>
+                        <div class="card mb-4 shadow" style="width: 18rem;">
+                            <div class="card-header text-white bg-primary">
+                                <h3 class="portfolio-item-title">${name}</h3>
+                                <h5 class="portfolio-languages">${role}</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">ID: ${id}</li>
+                                <li class="list-group-item">Email: ${email}</li>
+                                <li class="list-group-item">Office Number: ${number}</li>
+                                </ul>
                         </div>
                     `;
                 })
@@ -24,15 +25,16 @@ const generateProjects = projectsArr => {
             .filter(({ role }) => role === 'Engineer')
             .map(({ name, id, email, role, github }) => {
                 return `
-                    <div class="col-3 mb-2 mx-1 p-3 flex-column">
-                        <h3 class="portfolio-item-title">${name}</h3>
-                        <h5 class="portfolio-languages">
-                            Built With:
-                            ${id}
-                        </h5>
-                        <p>${email}</p>
-                        <p>${role}</p>
-                        <p>${github}</p>            
+                    <div class="card mb-4 shadow" style="width: 18rem;">
+                        <div class="card-header text-white bg-primary">
+                            <h3 class="portfolio-item-title">${name}</h3>
+                            <h5 class="portfolio-languages">${role}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">ID: ${id}</li>
+                            <li class="list-group-item">Email: ${email}</li>
+                            <li class="list-group-item">Github: ${github}</li>
+                        </ul>
                     </div>
                 `;
             })
@@ -42,15 +44,16 @@ const generateProjects = projectsArr => {
             .filter(({ role }) => role === 'Intern')
             .map(({ name, id, email, role, school }) => {
                 return `
-                    <div class="col-3 mb-2 mx-1 p-3 flex-column">
-                        <h3 class="portfolio-item-title">${name}</h3>
-                        <h5 class="portfolio-languages">
-                            Built With:
-                            ${id}
-                        </h5>
-                        <p>${email}</p>
-                        <p>${role}</p>
-                        <p>${school}</p>            
+                    <div class="card mb-4 shadow" style="width: 18rem;">
+                        <div class="card-header text-white bg-primary">
+                            <h3 class="portfolio-item-title">${name}</h3>
+                            <h5 class="portfolio-languages">${role}</h5>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">ID: ${id}</li>
+                            <li class="list-group-item">Email: ${email}</li>
+                            <li class="list-group-item">School: ${school}</li>
+                        </ul>
                     </div>
                 `;
             })
