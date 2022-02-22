@@ -3,7 +3,7 @@ const Manager = require('../lib/Manager.js');
 test('returns the office number', () => {
     const manager = new Manager();
 
-    expect(manager.officeNumber()).toEqual(expect.any(Number));
+    expect(manager.officeNumber()).toEqual(expect.any(String));
 })
 
 test('returns the manager as string', () => {

@@ -80,7 +80,6 @@ module.exports = templateData => {
         <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
         <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"/>
-        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
@@ -92,9 +91,6 @@ module.exports = templateData => {
         <main class="container my-5">
             ${generateProjects(templateData)}
         </main>
-        <footer class="container text-center py-3">
-            <h3 class="text-dark">&copy; Anthony Marrocco</h3>
-        </footer>
     </body>
     </html>
     `;

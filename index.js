@@ -23,7 +23,15 @@ class Index {
             .prompt({
                 type: 'text',
                 name: 'name',
-                message: `What is the ${role}'s name?`
+                message: `What is the ${role}'s name?`,
+                validate: nameInput => {
+                    if (nameInput) {
+                        return true;
+                    } else {
+                        console.log(`Please enter ${role} name!`);
+                        return false;
+                    } 
+                } 
             })
             .then(({ name }) => {
                 //takes name and saves it to new employee class
@@ -36,9 +44,17 @@ class Index {
         inquirer
         //prompts user to input employee id
             .prompt({
-                type: 'number',
+                type: 'input',
                 name: 'id',
-                message: `What is the ${role}'s id?`
+                message: `What is the ${role}'s id?`,
+                validate: idInput => {
+                    if (idInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter id!');
+                        return false;
+                    }
+                } 
             })
             .then(({ id }) => {
                 //takes id and saves it to new employee class
@@ -53,7 +69,15 @@ class Index {
             .prompt({
                 type: 'string',
                 name: 'email',
-                message: `What is the ${role}'s email?`
+                message: `What is the ${role}'s email?`,
+                validate: emailInput => {
+                    if (emailInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter email address!');
+                        return false;
+                    }
+                } 
             })
             .then(({ email }) => {
                 //takes email and saves it to new employee class
@@ -90,9 +114,17 @@ class Index {
         //prompts user to input employee role
         inquirer
             .prompt({
-                type: 'number',
+                type: 'input',
                 name: 'number',
-                message: `What is the Manager's number?`
+                message: `What is the Manager's number?`,
+                validate: numberInput => {
+                    if (numberInput) {
+                        return true;
+                    } else {
+                        console.log('Please enter number');
+                        return false;
+                    }
+                } 
             })
             .then(({ number }) => {
                 //takes number and saves it to manager class
@@ -109,7 +141,15 @@ class Index {
             .prompt({
                 type: 'input',
                 name: 'github',
-                message: "What is the Engineer's github username?"
+                message: "What is the Engineer's github username?",
+                validate: githubInput => {
+                    if (githubInput) {
+                        return true;
+                    } else {
+                        console.log(`Please enter Engineer's github username!`);
+                        return false;
+                    }
+                } 
             })
             .then(({ github }) => {
                 //takes role and saves it to engineer class
@@ -126,7 +166,15 @@ class Index {
             .prompt({
                 type: 'input',
                 name: 'school',
-                message: "What is the Intern's school?"
+                message: "What is the Intern's school?",
+                validate: schoolInput => {
+                    if (schoolInput) {
+                        return true;
+                    } else {
+                        console.log(`Please enter Intern's school!`);
+                        return false;
+                    }
+                } 
             })
             .then(({ school }) => {
                 //takes role and saves it to new employee class
