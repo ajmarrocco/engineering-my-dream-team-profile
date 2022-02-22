@@ -8,6 +8,7 @@ const fs = require('fs');
 
 
 var employeeArray = [];
+var role = 'Manager';
 
 class Index {
     //creates constructor
@@ -21,7 +22,7 @@ class Index {
             .prompt({
                 type: 'text',
                 name: 'name',
-                message: 'What is the employee name?'
+                message: `What is the ${role}'s name?`
             })
             .then(({ name }) => {
                 //takes name and saves it to new employee class
@@ -36,7 +37,7 @@ class Index {
             .prompt({
                 type: 'number',
                 name: 'id',
-                message: 'What is the employee id?'
+                message: `What is the ${role}'s id?`
             })
             .then(({ id }) => {
                 //takes id and saves it to new employee class
@@ -51,7 +52,7 @@ class Index {
             .prompt({
                 type: 'string',
                 name: 'email',
-                message: 'What is the employee email?'
+                message: `What is the ${role}'s email?`
             })
             .then(({ email }) => {
                 //takes email and saves it to new employee class
@@ -89,7 +90,7 @@ class Index {
             .prompt({
                 type: 'number',
                 name: 'number',
-                message: 'What is the manager number?'
+                message: `What is the Manager's number?`
             })
             .then(({ number }) => {
                 //takes role and saves it to new employee class
@@ -107,7 +108,7 @@ class Index {
             .prompt({
                 type: 'input',
                 name: 'github',
-                message: "What is the engineer's github username?"
+                message: "What is the Engineer's github username?"
             })
             .then(({ github }) => {
                 //takes role and saves it to new employee class
@@ -125,7 +126,7 @@ class Index {
             .prompt({
                 type: 'input',
                 name: 'school',
-                message: "What is the intern's school?"
+                message: "What is the Intern's school?"
             })
             .then(({ school }) => {
                 //takes role and saves it to new employee class
@@ -164,7 +165,6 @@ class Index {
                             choices: ['Engineer','Intern']
                         })
                         .then(({ role }) => {
-                            console.log(`You are adding a ${role}`)
                             // var role = role;
                             this.getName(role);
                             //takes role and saves it to new employee class
@@ -181,12 +181,11 @@ class Index {
                             // }
                         })
                 } else {
-                    // console.log(employees);
-                    // console.log(generatePage(employees))
+                    // writes file
                     writeFile(generatePage(employees));
-                    console.log(writeFile.message);
-                    copyFile();
-                    console.log(copyFile.message);
+                    console.log('File created!');
+                    // copyFile();
+                    // console.log(copyFile.message);
                     // return employees;
                 }
             })
@@ -194,11 +193,7 @@ class Index {
 
 }
 //calls get name
-new Index().getName()
-    // .then(employees => {
-    //     console.log(generatePage(employees))
-    //     return generatePage(employees);
-    // })
+new Index().getName(role)
 
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
@@ -218,23 +213,5 @@ const writeFile = fileContent => {
         });
     });
 };
-
-// copying file
-const copyFile = () => {
-    return new Promise((resolve, reject) => {
-        fs.copyFile('./src/style.css', './dist/style.css', err => {
-            if (err) {
-                reject(err);
-                return;
-            }
-
-            resolve({
-                ok: true,
-                message: 'Stylesheet created!'
-            });
-        });
-    });
-};
-
 
 module.exports = Index;
