@@ -1,3 +1,4 @@
+// Include packages needed for this application
 const inquirer = require('inquirer');
 const Employee = require('./lib/Employee');
 const Manager = require('./lib/Manager');
@@ -6,16 +7,16 @@ const Intern = require('./lib/Intern');
 const generatePage = require('./src/page-template');
 const fs = require('fs');
 
-
+//creates variables
 var employeeArray = [];
 var role = 'Manager';
 
 class Index {
     //creates constructor
     constructor() {
+        //make index 0
         this.index = 0;
     }
-    //getName method
     getName(role){
         inquirer
             //prompts user to input employee name
@@ -62,16 +63,17 @@ class Index {
             })
     }
     getRole(name,id,email,role){
-            //prompts user to input employee role
+        //if index is zero, it goes to manager class
         if(this.index === 0){
             let role = 'Manager'
-            //if role is manager then add to manager class
+            //adds to manager class
             this.manager = new Manager(name, id, email, role);
             //call getOfficeNumber
             this.getOfficeNumber(name, id, email, role);
         } else {
+            //if role is Engineer
             if (role === 'Engineer'){
-                //if role is engineer then add to enigneer class
+                //add sto enigneer class
                 this.engineer = new Engineer(name, id, email, role);
                 //call getGitHub
                 this.getGithub(name, id, email, role);
@@ -93,13 +95,12 @@ class Index {
                 message: `What is the Manager's number?`
             })
             .then(({ number }) => {
-                //takes role and saves it to new employee class
+                //takes number and saves it to manager class
                 this.manager = new Manager(name, id, email, role, number);
+                //pushs manager to employee array
                 employeeArray.push(this.manager);
-                // console.log(employeeArray)
+                //goes to add employee method
                 this.addEmployee(employeeArray);
-                //console tables employee class
-                // getRole(name,id,email,role,number)
             })
     }
     getGithub(name,id,email,role){
@@ -111,13 +112,12 @@ class Index {
                 message: "What is the Engineer's github username?"
             })
             .then(({ github }) => {
-                //takes role and saves it to new employee class
+                //takes role and saves it to engineer class
                 this.engineer = new Engineer(name, id, email, role, github);
+                //pushs engineer to employee array
                 employeeArray.push(this.engineer);
-                // console.log(employeeArray)
+                //goes to add employee method
                 this.addEmployee(employeeArray);
-                //console tables employee class
-                // getRole(name,id,email,role,number)
             })
     }
     getSchool(name,id,email,role){
@@ -140,6 +140,7 @@ class Index {
     }
     addEmployee(employees){
         inquirer
+            // asks user if they want to add another employee
             .prompt({
                 type: 'confirm',
                 name: 'confirmAddEmployee',
@@ -147,8 +148,9 @@ class Index {
                 default: false
             })
             .then(({ confirmAddEmployee }) => {
-
+                //if the answer is yes
                 if (confirmAddEmployee) {
+                    //increases index by 1 so it doesn't go to Manager class
                     this.index++;
                     //shows a new employee is being added
                     console.log(`
@@ -156,7 +158,7 @@ class Index {
                         Add a New Employee
                         ===================
                     `);
-
+                    // asks if the new employee is an engineer or a manager
                     inquirer
                         .prompt({
                             type: 'list',
@@ -165,28 +167,13 @@ class Index {
                             choices: ['Engineer','Intern']
                         })
                         .then(({ role }) => {
-                            // var role = role;
+                            //calls get name with role as parameter
                             this.getName(role);
-                            //takes role and saves it to new employee class
-                            // if(role === 'Engineer'){
-                            //     //if role is engineer then add to enigneer class
-                            //     this.engineer = new Engineer(name, id, email, role);
-                            //     //call getGitHub
-                            //     this.getGithub(name, id, email, role);
-                            // } else{
-                            //     //if role is intern then add to intern class
-                            //     this.intern = new Intern(name, id, email, role);
-                            //     //call getSchool
-                            //     this.getSchool(name, id, email, role);
-                            // }
                         })
                 } else {
-                    // writes file
+                    // if no employee needs to be added then writes file
                     writeFile(generatePage(employees));
                     console.log('File created!');
-                    // copyFile();
-                    // console.log(copyFile.message);
-                    // return employees;
                 }
             })
     }
@@ -195,6 +182,7 @@ class Index {
 //calls get name
 new Index().getName(role)
 
+//function for writing file
 const writeFile = fileContent => {
     return new Promise((resolve, reject) => {
         fs.writeFile('./dist/index.html', fileContent, err => {
