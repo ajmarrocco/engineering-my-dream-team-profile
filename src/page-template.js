@@ -9,11 +9,11 @@ const generateProjects = projectsArr => {
                         <div class="card mb-4 shadow" style="width: 18rem;">
                             <div class="card-header text-white bg-primary">
                                 <h3 class="portfolio-item-title">${name}</h3>
-                                <h5 class="portfolio-languages">${role}</h5>
+                                <h5 class="portfolio-languages"><span class="oi oi-dollar"></span> ${role}</h5>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">ID: ${id}</li>
-                                <li class="list-group-item">Email: ${email}</li>
+                                <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
                                 <li class="list-group-item">Office Number: ${number}</li>
                                 </ul>
                         </div>
@@ -28,12 +28,12 @@ const generateProjects = projectsArr => {
                     <div class="card mb-4 shadow" style="width: 18rem;">
                         <div class="card-header text-white bg-primary">
                             <h3 class="portfolio-item-title">${name}</h3>
-                            <h5 class="portfolio-languages">${role}</h5>
+                            <h5 class="portfolio-languages"><span class="oi oi-magnifying-glass"></span> ${role}</h5>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">ID: ${id}</li>
-                            <li class="list-group-item">Email: ${email}</li>
-                            <li class="list-group-item">Github: ${github}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
+                            <li class="list-group-item">Github: <a href="https://github.com/${github}" target="_blank">${github}</a></li>
                         </ul>
                     </div>
                 `;
@@ -47,11 +47,11 @@ const generateProjects = projectsArr => {
                     <div class="card mb-4 shadow" style="width: 18rem;">
                         <div class="card-header text-white bg-primary">
                             <h3 class="portfolio-item-title">${name}</h3>
-                            <h5 class="portfolio-languages">${role}</h5>
+                            <h5 class="portfolio-languages"><span class="oi oi-badge"></span> ${role}</h5>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">ID: ${id}</li>
-                            <li class="list-group-item">Email: ${email}</li>
+                            <li class="list-group-item">Email: <a href="mailto:${email}">${email}</a></li>
                             <li class="list-group-item">School: ${school}</li>
                         </ul>
                     </div>
@@ -78,6 +78,8 @@ module.exports = templateData => {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
         <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
+        <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"/>
         <link rel="stylesheet" href="style.css">
     </head>
 
