@@ -12,7 +12,7 @@ A program that generates an HTML with a team's basic information so the manager 
 * [Questions](#questions)
 
 ## Video
-Please see link to video walkthrough: 
+Please see link to video walkthrough: https://drive.google.com/file/d/17bzQso1dUE5QekUhF7fEfYVbL-ooscRa/view?usp=sharing
 
 ## Installation
 * To install NPM: npm install
