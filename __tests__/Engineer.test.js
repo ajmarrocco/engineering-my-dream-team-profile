@@ -6,7 +6,7 @@ test('returns the school name', () => {
     expect(engineer.getGithub()).toEqual(expect.any(String));
 })
 
-test('returns the intern as string', () => {
+test('returns the engineer as string', () => {
     const engineer = new Engineer();
 
     expect(engineer.getRole()).toEqual(expect.any(String));
