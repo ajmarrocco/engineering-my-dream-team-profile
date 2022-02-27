@@ -5,7 +5,7 @@ A program that generates an HTML with a team's basic information so the manager 
 
 ## Table of Contents
 * [Video](#video)
-* [Technologies] (#technolgoies)
+* [Technologies](#technologies)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contributing](#contributing)
