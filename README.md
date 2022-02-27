@@ -5,6 +5,7 @@ A program that generates an HTML with a team's basic information so the manager 
 
 ## Table of Contents
 * [Video](#video)
+* [Technologies] (#technolgoies)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Contributing](#contributing)
@@ -13,6 +14,14 @@ A program that generates an HTML with a team's basic information so the manager 
 
 ## Video
 Please see link to video walkthrough: https://drive.google.com/file/d/1mVCu4gmMiSdRIMxmH2m7fMcHotIrRDgv/view?usp=sharing
+
+## Technologies
+* Jest 
+* Inquirer
+* Node
+* HTML
+* CSS
+* JavaScript
 
 ## Installation
 * To install NPM: npm install
